@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #0e0b16;
+  --panel: #1d1c3a;
+  --input: #615f91;
+  --input-text: #201f38;
+  --text: #ebe9f3;
+  --muted: #8f88c9;
+  --button: #eda837;
+  --button-hover: #f4b84b;
+  --line: #e1e0ee;
+  --black: #07050d;
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #242426;
+  color: var(--text);
+  font-family: 'Poppins', Arial, sans-serif;
+}
+
+.page-frame {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--bg);
+  border: 6px solid #252525;
+  padding: 34px 38px 34px;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-header {
+  margin-bottom: 34px;
+}
+
+.mini-title {
+  color: var(--muted);
+  font-size: 23px;
+  line-height: 1.1;
+  margin: 2px 0 8px;
+  font-weight: 100;
+}
+
+h1 {
+  font-size: 29px;
+  line-height: 1.1;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 273px minmax(520px, 1fr) 273px;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 21px;
+  box-shadow: 0 18px 36px var(--shadow);
+}
+
+.panel-left,
+.panel-right {
+  padding: 22px 17px;
+  min-height: 505px;
+}
+
+.graph-panel {
+  height: 555px;
+  min-height: 505px;
+  padding: 23px 20px 18px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+h2 {
+  font-size: 18px;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.block + .block {
+  margin-top: 24px;
+}
+
+.right-block p {
+  margin: -10px 0 13px;
+  line-height: 1.48;
+  font-size: 15px;
+}
+
+.right-block.spaced {
+  margin-top: 34px;
+}
+
+label {
+  display: block;
+  margin: 12px 0 4px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+input,
+select {
+  width: 100%;
+  height: 36px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: var(--input);
+  color: var(--input-text);
+  padding: 0 13px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  font-weight:500;
+}
+
+input::placeholder {
+  color: #252441;
+  opacity: 1;
+}
+
+select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #24233e 50%),
+    linear-gradient(135deg, #24233e 50%, transparent 50%);
+  background-position:
+    calc(100% - 16px) 15px,
+    calc(100% - 9px) 15px;
+  background-size: 8px 8px, 8px 8px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.button-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+  margin-top: 18px;
+  padding: 0 4px;
+}
+
+.btn {
+  min-height: 34px;
+  border: none;
+  border-radius: 999px;
+  background: var(--button);
+  color: var(--black);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 4px 18px;
+  transition: transform 0.12s ease, background-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn:hover {
+  background: var(--button-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 15px rgba(237, 168, 55, 0.22);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-centered {
+  display: block;
+  width: 166px;
+  margin: 20px auto 0;
+}
+
+.btn-wide {
+  display: block;
+  width: 168px;
+  margin: 12px auto 0;
+}
+
+.graph-panel h2 {
+  margin-bottom: 14px;
+}
+
+.graph-box {
+  width: 100%;
+  height: 405px;
+  flex: 0 0 405px;
+  overflow: auto;
+  min-width: 0;
+  border-radius: 4px;
+  scrollbar-gutter: stable both-edges;
+}
+
+#graphSvg {
+  width: auto;
+  height: auto;
+  min-width: 650px;
+  min-height: 390px;
+  display: block;
+}
+
+.cycle-label {
+  fill: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.edge {
+  stroke: var(--line);
+  stroke-width: 1.6;
+  fill: none;
+}
+
+.node-rect {
+  fill: var(--input);
+  rx: 8;
+  ry: 8;
+}
+
+.node-text {
+  fill: var(--text);
+  font-size: 13.5px;
+  font-weight: 500;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+.scroll-decoration {
+  display: none;
+}
+
+.graph-box::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+.graph-box::-webkit-scrollbar-track {
+  background: #05040b;
+  border-radius: 999px;
+}
+
+.graph-box::-webkit-scrollbar-thumb {
+  background: #eda837;
+  border-radius: 999px;
+}
+
+.graph-box::-webkit-scrollbar-corner {
+  background: #05040b;
+}
+
+.graph-box {
+  scrollbar-width: thin;
+  scrollbar-color: #eda837 #05040b;
+}
+
+.page-footer {
+  margin-top: auto;
+  padding-top: 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 100;
+}
+
+.page-footer p {
+  margin: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 14, 0.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  padding: 24px;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: min(685px, calc(100vw - 48px));
+  min-height: 505px;
+  background: var(--panel);
+  border-radius: 21px;
+  padding: 16px 18px 28px;
+  position: relative;
+  box-shadow: 0 26px 55px rgba(0, 0, 0, 0.42);
+}
+
+.modal-card h2 {
+  font-size: 25px;
+  margin: 0 0 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.modal-close {
+  position: absolute;
+  right: 17px;
+  top: 6px;
+  border: none;
+  background: transparent;
+  color: var(--button);
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 43px;
+  line-height: 1;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 0 14px;
+  color: var(--text);
+  font-size: 23px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.modal-body p {
+  margin: 0 0 15px;
+}
+
+.modal-body ul {
+  margin: 8px 0 0 22px;
+  padding: 0;
+}
+
+.modal-body li {
+  margin: 8px 0;
+}
+
+.modal-body .small-note {
+  color: #bdb8e1;
+  font-size: 17px;
+  margin-top: 18px;
+}
+
+.modal-body .ok {
+  color: #92f2c9;
+  font-weight: 800;
+}
+
+.modal-body .bad {
+  color: #ffb2b2;
+  font-weight: 800;
+}
+
+.modal-body .highlight {
+  color: var(--button);
+  font-weight: 800;
+}
+
+@media (max-width: 1120px) {
+  .page-frame {
+    padding: 28px 22px;
+  }
+
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-left,
+  .panel-right {
+    min-height: unset;
+  }
+
+  .graph-panel {
+    height: 505px;
+    min-height: 505px;
+  }
+
+  .page-footer {
+    gap: 18px;
+    flex-wrap: wrap;
+    font-size: 18px;
+  }
+}

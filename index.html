@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema de pre-requisitos universitario</title>
+  <link rel="icon" type="image" href="image/gerson.png">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-frame">
+    <header class="top-header">
+      <p class="mini-title">Pequeña demo :3</p>
+      <h1>Sistema de prerrequisitos universitario!!</h1>
+    </header>
+
+    <main class="main-layout">
+      <aside class="panel panel-left">
+        <section class="block">
+          <h2>Registro de curso</h2>
+
+          <label for="courseName">Nombre de curso</label>
+          <input id="courseName" type="text" placeholder="Ejem: Curso 1" autocomplete="off" />
+
+          <label for="courseCycle">Ciclo</label>
+          <select id="courseCycle">
+            <option value="" selected disabled>Escoge ciclo</option>
+            <option value="1">Ciclo 1</option>
+            <option value="2">Ciclo 2</option>
+            <option value="3">Ciclo 3</option>
+            <option value="4">Ciclo 4</option>
+            <option value="5">Ciclo 5</option>
+            <option value="6">Ciclo 6</option>
+            <option value="7">Ciclo 7</option>
+            <option value="8">Ciclo 8</option>
+          </select>
+
+          <div class="button-row">
+            <button id="addCourseBtn" class="btn">Agregar</button>
+            <button id="deleteCourseBtn" class="btn">Borrar</button>
+          </div>
+        </section>
+
+        <section class="block relation-block">
+          <h2>Registro de relaciones</h2>
+
+          <label for="fromCourse">Curso</label>
+          <select id="fromCourse"></select>
+
+          <label for="toCourse">Curso que abre</label>
+          <select id="toCourse"></select>
+
+          <button id="addRelationBtn" class="btn btn-centered">Relacionar</button>
+        </section>
+      </aside>
+
+      <section class="panel graph-panel">
+        <h2>Grafo de prerrequisitos</h2>
+        <div class="graph-box">
+          <svg id="graphSvg" viewBox="0 0 650 390" aria-label="Grafo de prerrequisitos"></svg>
+        </div>
+        <div class="scroll-decoration" aria-hidden="true"></div>
+      </section>
+
+      <aside class="panel panel-right">
+        <section class="block right-block">
+          <h2>Validación de malla</h2>
+          <p>Verifica que el grafo formado sea DAG mediante DFS</p>
+          <button id="validateDagBtn" class="btn btn-wide">Validar DAG</button>
+        </section>
+
+        <section class="block right-block spaced">
+          <h2>Ver cursos que dependen</h2>
+          <label for="dependCourse">Curso</label>
+          <select id="dependCourse"></select>
+          <button id="runBfsBtn" class="btn btn-wide">Ejecutar BFS</button>
+        </section>
+
+        <section class="block right-block spaced">
+          <h2>Cursos disponibles</h2>
+          <label for="approvedInput">Curso aprobado</label>
+          <input id="approvedInput" type="text" placeholder="Ejem: Curso 1, Curso 2" autocomplete="off" />
+          <button id="availableBtn" class="btn btn-wide">Ejecutar BFS</button>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="page-footer">
+      <p>Estructuras Discretas II</p>
+      <p>Martha Medina, Isabel Padilla</p>
+    </footer>
+  </div>
+
+  <div id="modalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button id="closeModalBtn" class="modal-close" aria-label="Cerrar resultados">X</button>
+      <h2 id="modalTitle">RESULTADOS</h2>
+      <div id="modalBody" class="modal-body">
+        Texto que indique el resultado de la elección
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
