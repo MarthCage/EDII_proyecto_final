@@ -4,3 +4,4 @@ Proyecto final del curso de Estructuras Discretas II, es un sistema de prerrequi
 ## Alumnas:
 - Medina Rojas, Martha Sofia
 - Padilla Romero, Isabel Antonella
+- Pellanne Aro, Carlos Alfredo
