@@ -195,6 +195,27 @@ function addRelation() {
     return;
   }
 
+  const fromCourse = getCourse(from);
+  const toCourse = getCourse(to);
+
+  if (fromCourse.cycle === toCourse.cycle) {
+    showModal(`
+      <p>No se puede crear esta relación.</p>
+      <p><span class="highlight">${escapeHtml(fromCourse.name)}</span> y <span class="highlight">${escapeHtml(toCourse.name)}</span> pertenecen al mismo ciclo.</p>
+      <p class="small-note">En una malla curricular, un prerrequisito debe estar en un ciclo anterior al curso que habilita.</p>
+    `);
+    return;
+  }
+
+  if (fromCourse.cycle > toCourse.cycle) {
+    showModal(`
+      <p>No se puede crear esta relación.</p>
+      <p><span class="highlight">${escapeHtml(fromCourse.name)}</span> está en un ciclo posterior a <span class="highlight">${escapeHtml(toCourse.name)}</span>.</p>
+      <p class="small-note">Un curso de un ciclo superior no debería ser prerrequisito de un curso de ciclo anterior.</p>
+    `);
+    return;
+  }
+
   if (edges.some(([a, b]) => a === from && b === to)) {
     showModal(`<p>La relación seleccionada ya existe en el grafo.</p>`);
     return;
@@ -203,8 +224,8 @@ function addRelation() {
   edges.push([from, to]);
   renderGraph();
 
-  const fromName = getCourse(from).name;
-  const toName = getCourse(to).name;
+  const fromName = fromCourse.name;
+  const toName = toCourse.name;
 
   showModal(`
     <p>Se creó la relación:</p>
